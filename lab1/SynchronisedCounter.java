@@ -14,7 +14,7 @@ public class SynchronisedCounter {
         this.value--;
     }
 
-    public int getValue() {
+    public synchronized int getValue() {
         return value;
     }
 }

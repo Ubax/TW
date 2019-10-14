@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class zad3 {
     public static void main(String[] args) {
         Buffer buffer = new Buffer();
-        Thread p1 = new Thread(new Producer(buffer, "p1 "));
+        Thread p1 = new Thread(new Producer(buffer, "p1"));
         Thread p2 = new Thread(new Producer(buffer,"p2"));
         Thread c1 = new Thread(new Consumer(buffer));
         Thread c2 = new Thread(new Consumer(buffer));

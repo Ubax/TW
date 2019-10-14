@@ -18,7 +18,7 @@ public class Producer implements Runnable {
 
     public void run() {
         for(int i = 0;  i < ILOSC;   i++) {
-            buffer.put(Long.toString(System.nanoTime()) + "\t"+prefix + "message "+i);
+            buffer.put(prefix + " message "+i);
         }
     }
 }

@@ -15,9 +15,8 @@ public class Consumer implements Runnable {
     }
 
     public void run() {
-
         for(int i = 0;  i < ILOSC;   i++) {
-            System.out.println(Long.toString(System.nanoTime()) +"\t"+buffer.take());
+            System.out.println(buffer.take());
         }
     }
 }
