@@ -6,12 +6,12 @@ package lab2;
 public class BinarySemaphor implements Semaphore{
     private boolean isTaken;
 
-    public synchronized void post(){
+    public synchronized void V(){
         this.isTaken=false;
         notifyAll();
     }
 
-    public synchronized void take(){
+    public synchronized void P(){
         while (this.isTaken){
             try {
                 wait();

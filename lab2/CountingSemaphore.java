@@ -11,12 +11,12 @@ public class CountingSemaphore implements Semaphore{
         this.maxNumberOfSemaphores = maxNumberOfSemaphores;
     }
 
-    public synchronized void post(){
+    public synchronized void V(){
         this.maxNumberOfSemaphores++;
         notifyAll();
     }
 
-    public synchronized void take(){
+    public synchronized void P(){
         while(this.maxNumberOfSemaphores==0){
             try{
                 wait();
