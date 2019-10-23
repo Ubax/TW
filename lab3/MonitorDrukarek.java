@@ -16,11 +16,11 @@ public class MonitorDrukarek {
 
     public MonitorDrukarek(int liczba) {
         for (int i = 0; i < liczba; i++) {
-            drukarki.add(new Drukarka(lock.newCondition()));
+            drukarki.add(new Drukarka(lock.newCondition(), "Drukarka "+Integer.toString(i)));
         }
     }
 
-    public Drukarka zarezerwuj() {
+    public Drukarka zarezerwuj() throws InterruptedException{
         lock.lock();
         try {
             Drukarka drukarka = this.drukarki.get(id++);
@@ -34,10 +34,10 @@ public class MonitorDrukarek {
         }
     }
 
-    public void zwolnij(Drukarka drukarka) {
+    public void zwolnij(Drukarka drukarka) throws InterruptedException{
         lock.lock();
         try {
-        drukarka.zwolnij();
+            drukarka.zwolnij();
         }finally {
             lock.unlock();
         }

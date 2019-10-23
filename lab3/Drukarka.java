@@ -9,23 +9,26 @@ import java.util.concurrent.locks.Condition;
 public class Drukarka {
     private final Condition condition;
     private String prefix;
-    public Drukarka(Condition condition, String prefix){
+    private boolean isBeingUsed = false;
+
+    public Drukarka(Condition condition, String prefix) {
         this.condition = condition;
         this.prefix = prefix;
     }
 
-    public void zarezerwuj() throws InterruptedException{
-            this.condition.await();
-
+    public void zarezerwuj() throws InterruptedException {
+        while (isBeingUsed) this.condition.await();
+        this.isBeingUsed = true;
     }
 
-    public void zwolnij() throws InterruptedException{
+    public void zwolnij() throws InterruptedException {
+        this.isBeingUsed=false;
         this.condition.signal();
     }
 
-    public void drukuj(){
+    public void drukuj() throws InterruptedException {
         System.out.println(prefix + "> Drukuje...");
-        Thread.sleep(new Random().nextInt(10)*1000);
+        Thread.sleep(new Random().nextInt(10) * 1000);
         System.out.println(prefix + "> Skonczyłem ...");
     }
 }

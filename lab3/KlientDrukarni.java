@@ -18,17 +18,19 @@ public class KlientDrukarni implements Runnable {
 
     @Override
     public void run() {
-        while (1) {
+        while (true) {
             try {
 
                 System.out.println(prefix + "> Czekam na zlecenie");
                 Thread.sleep(new Random().nextInt(3) * 1000);
                 System.out.println(prefix + "> Chce wydrukowac");
                 drukarka = monitorDrukarek.zarezerwuj();
+                System.out.println(prefix + "> Dostalem drukarke");
+                drukarka.drukuj();
                 System.out.println(prefix + "> Skonczyl drukowac");
                 monitorDrukarek.zwolnij(drukarka);
             } catch (Exception e) {
-                System.out.println("erro");
+                System.out.println("error");
             }
         }
     }
