@@ -9,7 +9,7 @@ import lab2.Semaphore;
  */
 public class Cell {
     private String data;
-    private boolean isEmpty;
+    private boolean isEmpty=true;
     private final Semaphore empty = new BinarySemaphor();
     private final Semaphore beingProcessed = new BinarySemaphor();
 
@@ -25,10 +25,17 @@ public class Cell {
         this.beingProcessed.V();
     }
 
-    public void insert(String data){
+    public void waitTillEmpty(){
         this.empty.P();
+    }
+
+    public void insert(String data){
         this.data=data;
         this.isEmpty=false;
+    }
+
+    public void edit(String data){
+        this.data=data;
     }
 
     public void clear(){
