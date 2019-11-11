@@ -58,9 +58,9 @@ public class Kelner {
         lock.lock();
         try {
             if (pary.get(para) == 2) {
-                pary.put(para, 1);
+                pary.put(para, 3);
             }
-            else if (pary.get(para) == 1) {
+            else if (pary.get(para) == 3) {
                 pary.put(para, 0);
                 this.stolik.zwolnij();
                 this.stolikCondition.signalAll();
