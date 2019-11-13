@@ -1,6 +1,5 @@
-package lab4;
+package lab4.pipelining;
 
-import lab2.BinarySemaphor;
 import lab2.CountingSemaphore;
 import lab2.Semaphore;
 

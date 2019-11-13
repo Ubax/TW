@@ -1,4 +1,4 @@
-package lab4;
+package lab4.pipelining;
 
 
 import lab2.BinarySemaphor;

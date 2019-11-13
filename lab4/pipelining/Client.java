@@ -1,4 +1,4 @@
-package lab4;
+package lab4.pipelining;
 
 /**
  * Created on 11.11.19

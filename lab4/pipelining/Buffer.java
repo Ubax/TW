@@ -1,9 +1,7 @@
-package lab4;
+package lab4.pipelining;
 
 import lab2.BinarySemaphor;
 import lab2.Semaphore;
-
-import java.util.ArrayList;
 
 /**
  * Created on 11.11.19

@@ -1,10 +1,4 @@
-package lab4;
-
-import lab2.BinarySemaphor;
-
-import lab2.Semaphore;
-
-import java.util.concurrent.Callable;
+package lab4.pipelining;
 
 /**
  * Created on 11.11.19
