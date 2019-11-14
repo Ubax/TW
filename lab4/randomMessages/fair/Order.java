@@ -12,6 +12,7 @@ public abstract class Order {
 
     public Order(int numberOfElements) {
         this.numberOfElements = numberOfElements;
+        this.semaphore.P();
     }
 
     public void placeOrder(){

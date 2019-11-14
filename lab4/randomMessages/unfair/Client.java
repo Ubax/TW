@@ -12,7 +12,8 @@ public class Client implements Runnable{
     private int M;
     private Buffer buffer;
     private Random random;
-
+    private long sumTime;
+    private int numberOfCycles=0;
 
     public Client(int m, Buffer buffer) {
         M = m;
@@ -22,14 +23,21 @@ public class Client implements Runnable{
 
     @Override
     public void run() {
+        long start;
         try {
-            while (true) {
-                ArrayList<String> list = this.buffer.get(random.nextInt(this.M - 1) + 1);
-                System.out.println(list);
-                Thread.sleep(10);
+            while (!this.buffer.shouldFinish()) {
+                start=System.nanoTime();
+                this.buffer.get(random.nextInt(this.M - 1) + 1);
+                sumTime+=System.nanoTime()-start;
+                numberOfCycles++;
+//                System.out.println(list);
+//                Thread.sleep(10);
             }
+            this.buffer.clientFinished((double) sumTime/ (double)numberOfCycles);
+            System.out.println("Client> Finished ");
         }catch (Exception e){
             System.out.println("Client broke");
+            e.printStackTrace();
         }
     }
 }

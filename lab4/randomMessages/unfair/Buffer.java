@@ -1,6 +1,7 @@
 package lab4.randomMessages.unfair;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -18,10 +19,34 @@ public class Buffer {
     private final Condition decreaseNumberOfInsertedElementsCondition = lock.newCondition();
     private final Condition increaseNumberOfInsertedElementsCondition = lock.newCondition();
 
-    public Buffer(int size) {
+    private int finishedProducers;
+    private List<Double> avgTimes = new ArrayList<>();
+
+    public Buffer(int size, int numberOfProducers) {
         this.size = size;
         elements = new String[size];
         for (int i = 0; i < size; i++) elements[i] = "";
+        this.finishedProducers=numberOfProducers;
+    }
+
+    public double getAvgTime(){
+        return avgTimes.stream().reduce(0.0, (s, e)->s+e)/avgTimes.size();
+    }
+
+    public void producerFinished(double avgTime){
+        this.avgTimes.add(avgTime);
+        this.finishedProducers--;
+        if(shouldFinish()){
+            increaseNumberOfInsertedElementsCondition.signalAll();
+        }
+    }
+
+    public boolean shouldFinish(){
+        return this.finishedProducers<=0;
+    }
+
+    public void clientFinished(double avgTime){
+        this.avgTimes.add(avgTime);
     }
 
     public int next(int index) {
@@ -39,7 +64,7 @@ public class Buffer {
                 elements[insertIndex] = prefix + Integer.toString(i);
                 insertIndex = next(insertIndex);
             }
-            System.out.println("Buffer> Inserted " + numberOfElements + " messages");
+//            System.out.println("Buffer> Inserted " + numberOfElements + " messages");
             increaseNumberOfInsertedElementsCondition.signalAll();
         } catch (Exception e) {
             System.out.println("Insert exception");
@@ -52,7 +77,7 @@ public class Buffer {
         ArrayList<String> arrayList = new ArrayList<>();
         lock.lock();
         try {
-            while (numberOfInsertedElements < numberOfElements) {
+            while (!shouldFinish() && numberOfInsertedElements < numberOfElements) {
                 increaseNumberOfInsertedElementsCondition.await();
             }
             for (int i = 0; i < numberOfElements; i++) {

@@ -9,17 +9,19 @@ import java.util.List;
 public class main {
     public static void main(String[] args) {
         try {
-            int M = 10;
-            Buffer buffer = new Buffer(2 * M);
+            int M = 1_000;
+            int N = 1_000;
+            Buffer buffer = new Buffer(2 * M, N);
             List<Thread> threads = new ArrayList<>();
-            for (int i = 0; i < 5; i++) threads.add(new Thread(new Producer(M, buffer)));
-            for (int i = 0; i < 5; i++) threads.add(new Thread(new Client(M, buffer)));
+            for (int i = 0; i < N; i++) threads.add(new Thread(new Producer(M, buffer)));
+            for (int i = 0; i < N; i++) threads.add(new Thread(new Client(M, buffer)));
             for (var t : threads) {
                 t.start();
             }
             for (var t : threads) {
                 t.join();
             }
+            System.out.println("AVG "+buffer.getAvgTime());
         }catch (Exception e){
             System.out.println("Program exception");
         }
