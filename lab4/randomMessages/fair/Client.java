@@ -1,5 +1,6 @@
 package lab4.randomMessages.fair;
 
+
 import java.util.ArrayList;
 import java.util.Random;
 
