@@ -1,5 +1,8 @@
 package lab4.randomMessages.unfair;
 
+import lab4.randomMessages.Data;
+import lab4.randomMessages.DataWriter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Condition;
@@ -19,34 +22,45 @@ public class Buffer {
     private final Condition decreaseNumberOfInsertedElementsCondition = lock.newCondition();
     private final Condition increaseNumberOfInsertedElementsCondition = lock.newCondition();
 
-    private int finishedProducers;
-    private List<Double> avgTimes = new ArrayList<>();
+    private DataWriter dataClientWriter = new DataWriter("client-unfair.csv");
+    private DataWriter dataProducerWriter = new DataWriter("producer-unfair.csv");
 
-    public Buffer(int size, int numberOfProducers) {
+    private final int numberOfCyclesToWrite;
+
+    private List<Long> clientTimes = new ArrayList<>();
+    private List<Long> producerTime = new ArrayList<>();
+
+    public Buffer(int size, int numberOfCyclesToWrite) {
         this.size = size;
         elements = new String[size];
         for (int i = 0; i < size; i++) elements[i] = "";
-        this.finishedProducers=numberOfProducers;
+        this.numberOfCyclesToWrite = numberOfCyclesToWrite;
     }
 
-    public double getAvgTime(){
-        return avgTimes.stream().reduce(0.0, (s, e)->s+e)/avgTimes.size();
-    }
+//    public double getAvgClientTime() {
+//        return clientTimes.stream().reduce(0.0, (s, e) -> s + e) / clientTimes.size();
+//    }
+//
+//    public double getAvgProducerTime() {
+//        return producerTime.stream().reduce(0.0, (s, e) -> s + e) / producerTime.size();
+//    }
 
-    public void producerFinished(double avgTime){
-        this.avgTimes.add(avgTime);
-        this.finishedProducers--;
-        if(shouldFinish()){
-            increaseNumberOfInsertedElementsCondition.signalAll();
+    public void addProducerTime(long avgTime, int size) {
+        this.producerTime.add(avgTime);
+        if (this.producerTime.size() > numberOfCyclesToWrite) dataProducerWriter.write(new Data(avgTime, size));
+        if (this.producerTime.size() % numberOfCyclesToWrite == 0) {
+            dataProducerWriter.save();
+            System.out.println("Producer saved");
         }
     }
 
-    public boolean shouldFinish(){
-        return this.finishedProducers<=0;
-    }
-
-    public void clientFinished(double avgTime){
-        this.avgTimes.add(avgTime);
+    public void addClientTime(long avgTime, int size) {
+        this.clientTimes.add(avgTime);
+        if (this.clientTimes.size() > numberOfCyclesToWrite) dataClientWriter.write(new Data(avgTime, size));
+        if (this.clientTimes.size() % numberOfCyclesToWrite == 0) {
+            dataClientWriter.save();
+            System.out.println("Client saved");
+        }
     }
 
     public int next(int index) {
@@ -54,6 +68,7 @@ public class Buffer {
     }
 
     public void insert(int numberOfElements, String prefix) {
+        long start = System.nanoTime();
         lock.lock();
         try {
             while (size - numberOfInsertedElements < numberOfElements) {
@@ -64,6 +79,7 @@ public class Buffer {
                 elements[insertIndex] = prefix + Integer.toString(i);
                 insertIndex = next(insertIndex);
             }
+            this.addProducerTime(System.nanoTime()-start, numberOfElements);
 //            System.out.println("Buffer> Inserted " + numberOfElements + " messages");
             increaseNumberOfInsertedElementsCondition.signalAll();
         } catch (Exception e) {
@@ -75,16 +91,18 @@ public class Buffer {
 
     public ArrayList<String> get(int numberOfElements) {
         ArrayList<String> arrayList = new ArrayList<>();
+        long start = System.nanoTime();
         lock.lock();
         try {
-            while (!shouldFinish() && numberOfInsertedElements < numberOfElements) {
+            while (numberOfInsertedElements < numberOfElements) {
                 increaseNumberOfInsertedElementsCondition.await();
             }
             for (int i = 0; i < numberOfElements; i++) {
                 arrayList.add(elements[readingIndex]);
                 readingIndex = next(readingIndex);
             }
-            numberOfInsertedElements-=numberOfElements;
+            numberOfInsertedElements -= numberOfElements;
+            this.addClientTime(System.nanoTime()-start, numberOfElements);
             decreaseNumberOfInsertedElementsCondition.signalAll();
         } catch (Exception e) {
             System.out.println("Reading exception");
