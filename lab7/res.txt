@@ -1,0 +1,437 @@
+Phil 0: Thinking
+Phil 1: Left taken
+Phil 1: Thinking
+Phil last: Left taken
+Phil last: Right taken
+Phil last: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Releasing forks
+Phil last: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Releasing forks
+Phil last: Thinking
+Phil 0: Releasing forks
+Phil 0: Thinking
+Phil last: Acquiring left fork
+Phil last: Acquiring right fork
+Phil last: Eating
+Phil 0: Acquiring left fork
+Phil 0: Acquiring right fork
+Phil 0: Eating
+Phil 1: Releasing forks
+Phil 1: Thinking
+Phil 1: Acquiring left fork
+Phil 1: Acquiring right fork
+Phil 1: Eating
+Phil last: Releasing forks
+Phil last: Thinking
