@@ -1,4 +1,5 @@
 const EventEmitter = require('events');
+const { performance } = require('perf_hooks');
 
 class Lock extends EventEmitter { }
 
@@ -45,23 +46,24 @@ class Waiter {
 		}
 		return false;
 	}
-	release(){
+	release() {
 		this.currentlyEating--;
 	}
 }
 
-const acquiringLock = new Lock();
-
 class Philosopher {
-	constructor(name, leftFork, rightFork, waiter) {
+	constructor(name, waiter, leftFork, rightFork, thinkingTime, eatingTime, waitingTimes) {
 		this.name = name
+		this.waiter = waiter;
 		this.leftFork = leftFork
 		this.rightFork = rightFork
 		this.running = true;
-		this.waiter = waiter;
+		this.thinkingTime = thinkingTime;
+		this.eatingTime = eatingTime;
+		this.waitingTimes = waitingTimes;
 	}
 	_log(msg) {
-		console.log(`${this.name}: ${msg}`)
+		if (DEBUG) console.log(`${this.name}: ${msg}`)
 	}
 	kill() {
 		this.running = false;
@@ -70,7 +72,7 @@ class Philosopher {
 		if (this.waiter.allow(this.leftFork, this.rightFork)) {
 			f();
 		} else {
-			setTimeout(() => this.waitForPermission(f), Math.floor(Math.random() * 100));
+			setTimeout(() => this.waitForPermission(f), getWaitingTime(this.thinkingTime));
 		}
 	}
 	acquireForks() {
@@ -86,11 +88,13 @@ class Philosopher {
 		while (this.running) {
 			await this.acquireForks();
 			await this.think();
+			let start = performance.now();
 			this._log("Acquiring left fork");
 			await this.leftFork.acquire();
 			this._log("Acquiring right fork");
 			await this.rightFork.acquire();
 			await this.dine();
+			this.waitingTimes.push(performance.now() - start);
 			this._log("Releasing forks");
 			this.leftFork.release();
 			this.rightFork.release();
@@ -102,7 +106,7 @@ class Philosopher {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
 				resolve();
-			}, Math.floor(Math.random() * 100))
+			}, getWaitingTime(this.thinkingTime));
 		})
 	}
 	dine() {
@@ -110,18 +114,62 @@ class Philosopher {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
 				resolve();
-			}, Math.floor(Math.random() * 100 + 200))
+			}, getWaitingTime(this.eatingTime))
 		})
 	}
 }
 
-const N = 3;
+const getWaitingTime = time => Math.floor(time.time + (Math.random() * 2 * time.delta) - time.delta);
 
-var forks = []
-var philosophers = []
-var waiter = new Waiter(N);
-for (let i = 0; i < N; i++)forks.push(new Fork());
-for (let i = 0; i < N - 1; i++)philosophers.push(new Philosopher(`Phil ${i}`, forks[i], forks[i + 1], waiter));
-philosophers.push(new Philosopher(`Phil last`, forks[forks.length - 1], forks[0], waiter));
-philosophers.forEach((x, i) => x.run())
-setTimeout(() => { console.log("Finished!"); }, 10000);
+const DEBUG = false;
+
+function run(N, thinkingTime, eatingTime, cb) {
+	var forks = [];
+	var philosophers = [];
+	var waitingTimes = [];
+	var waiter = new Waiter(N)
+	for (let i = 0; i < N; i++)forks.push(new Fork());
+	for (let i = 0; i < N - 1; i++)philosophers.push(new Philosopher(`Phil ${i}`, waiter, forks[i], forks[i + 1], thinkingTime, eatingTime, waitingTimes));
+	philosophers.push(new Philosopher(`Phil last`, waiter, forks[forks.length - 1], forks[0], thinkingTime, eatingTime, waitingTimes));
+	philosophers.forEach((x, i) => x.run())
+	setTimeout(() => {
+		philosophers.forEach((x, i) => x.kill());
+		console.log(`${N}\t${thinkingTime.time}\t${eatingTime.time}\t${waitingTimes.reduce((acc, cur) => acc + cur) / waitingTimes.length}`.replace(/\./g, ","))
+		cb();
+	}, 5000);
+}
+
+function runN(N, MAX_N, thinkingTime, eatingTime) {
+	run(N, thinkingTime, eatingTime, () => {
+		if (N < MAX_N) {
+			runN(N + 1, MAX_N, thinkingTime, eatingTime);
+		}
+	})
+}
+
+function runTT(N, thinkingTime, thinkingTimeMax, eatingTime) {
+	run(N, thinkingTime, eatingTime, () => {
+		if (thinkingTime.time < thinkingTimeMax) {
+			runTT(N,
+				{
+					time: thinkingTime.time + thinkingTime.time / 10,
+					delta: thinkingTime.delta + thinkingTime.delta / 10
+				}, thinkingTimeMax, eatingTime);
+		}
+	})
+}
+
+function runET(N, thinkingTime, eatingTime, eatingTimeMax) {
+	run(N, thinkingTime, eatingTime, () => {
+		if (eatingTime.time < eatingTimeMax) {
+			runET(N, thinkingTime, eatingTimeMax, {
+				time: eatingTime.time + eatingTime.time / 10,
+				delta: eatingTime.delta + eatingTime.delta / 10
+			});
+		}
+	})
+}
+
+runN(2, 30, { time: 10, delta: 1 }, { time: 10, delta: 1 });
+// runTT(5, { time: 6, delta: 0.6 }, 500, { time: 50, delta: 5 });
+// runTT(5, { time: 50, delta: 5 }, { time: 6, delta: 0.6 }, 500);
