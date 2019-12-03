@@ -153,7 +153,23 @@ function runET(N, thinkingTime, eatingTime, eatingTimeMax) {
 	})
 }
 
-runN(2, 30, { time: 10, delta: 1 }, { time: 10, delta: 1 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // runTT(5, { time: 6, delta: 0.6 }, 500, { time: 50, delta: 5 });
 //runET(5, { time: 50, delta: 5 }, { time: 6, delta: 0.6 }, 500);
 
