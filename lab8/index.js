@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
     setTimeout(() => {
         i++;
         res.send(`Response ${i}`);
-    }, 100);
+    }, 150);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

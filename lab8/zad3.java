@@ -13,7 +13,7 @@ public class zad3 {
         }
 
         for (var s : data) {
-            System.out.println(s);
+           // System.out.println(s);
         }
 
     }
@@ -21,11 +21,11 @@ public class zad3 {
     public static void getDataAsync() throws Exception {
         List<CompletableFuture<String>> futureData = new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 200; i++) {
             futureData.add(new DataGetterAsync().getData());
         }
         for (var s : futureData) {
-            System.out.println(s.get());
+            //System.out.println(s.get());
         }
     }
 
