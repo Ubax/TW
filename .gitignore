@@ -1,4 +1,4 @@
-
+qrcode/data*
 # Created by https://www.gitignore.io/api/node,java,python
 # Edit at https://www.gitignore.io/?templates=node,java,python
 
@@ -223,4 +223,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# End of https://www.gitignore.io/api/node,java,python
+bin/
+share/
+lib64/
