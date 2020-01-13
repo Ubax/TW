@@ -35,11 +35,29 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
     private val decoder = Base64.getDecoder()
     private lateinit var receivedFile: Array<ByteArray>
     private var initialized: Boolean = false
+    private var printed: Boolean = false
+    private var start: Long = 0
+    private var end: Long = 0
 
     private fun getFile(): ByteArray {
         return receivedFile.reduce { acc: ByteArray, bytes: ByteArray ->
             acc + bytes
         }
+    }
+
+    private fun isWhole(): Boolean {
+        for (x in receivedFile) {
+            if (x.isEmpty()) return false
+        }
+        return true
+    }
+
+    private fun dataSize(): Int {
+        var size = 0
+        for (x in receivedFile) {
+            size += x.size
+        }
+        return size
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,13 +120,28 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                     val n: String = d.split("|")[0]
                     val size: String = d.split("|")[1]
                     if (!this.initialized) {
+                        start = System.currentTimeMillis()
+                        resultTextView.text = "Loading..."
                         receivedFile = Array(size.toInt()) { ByteArray(0) }
                         initialized = true
                     }
                     val data: String = d.split("|")[2]
                     val decoded = decoder.decode(data)
                     receivedFile[n.toInt()] = decoded
-                    resultTextView.text = n + String(getFile(), Charsets.UTF_8)
+                    if (isWhole()) {
+                        if (!printed) {
+                            end = System.currentTimeMillis()
+                            val time = (end - start)
+                            resultTextView.text =
+                                "Size: " + dataSize() + "\nTime: " + time + "\n" + "Speed: "+ (dataSize()*1.0/time*1000) + "b/s\n" + String(
+                                    getFile(),
+                                    Charsets.UTF_8
+                                )
+                            printed = true
+                        }
+                    } else {
+                        resultTextView.text = "Loading [" + n + "]"
+                    }
                 }
                 Log.d("MainActivity", "QR Code detected: ${it.rawValue}.")
             }
